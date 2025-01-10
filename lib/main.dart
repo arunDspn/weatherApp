@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/ui/Weather/widget/home_page.dart';
+import 'package:weather_app/ui/Weather/widget/home_page_river.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -11,9 +13,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home:
-          HomePage(), // This trailing comma makes auto-formatting nicer for build methods.
+          HomePageRiver(), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

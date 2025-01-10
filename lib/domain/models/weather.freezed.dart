@@ -20,13 +20,9 @@ Weather _$WeatherFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Weather {
-//required Coord coord,
-  List<WeatherElement> get weather =>
-      throw _privateConstructorUsedError; //required String base,
+  List<WeatherElement> get weather => throw _privateConstructorUsedError;
   Main get main => throw _privateConstructorUsedError;
-  int get visibility =>
-      throw _privateConstructorUsedError; //required Wind wind,
-//required Rain rain,
+  int get visibility => throw _privateConstructorUsedError;
   Clouds get clouds => throw _privateConstructorUsedError;
   int get dt => throw _privateConstructorUsedError;
   Sys get sys => throw _privateConstructorUsedError;
@@ -268,9 +264,7 @@ class _$WeatherImpl implements _Weather {
   factory _$WeatherImpl.fromJson(Map<String, dynamic> json) =>
       _$$WeatherImplFromJson(json);
 
-//required Coord coord,
   final List<WeatherElement> _weather;
-//required Coord coord,
   @override
   List<WeatherElement> get weather {
     if (_weather is EqualUnmodifiableListView) return _weather;
@@ -278,13 +272,10 @@ class _$WeatherImpl implements _Weather {
     return EqualUnmodifiableListView(_weather);
   }
 
-//required String base,
   @override
   final Main main;
   @override
   final int visibility;
-//required Wind wind,
-//required Rain rain,
   @override
   final Clouds clouds;
   @override
@@ -365,14 +356,12 @@ abstract class _Weather implements Weather {
 
   factory _Weather.fromJson(Map<String, dynamic> json) = _$WeatherImpl.fromJson;
 
-//required Coord coord,
   @override
-  List<WeatherElement> get weather; //required String base,
+  List<WeatherElement> get weather;
   @override
   Main get main;
   @override
-  int get visibility; //required Wind wind,
-//required Rain rain,
+  int get visibility;
   @override
   Clouds get clouds;
   @override
@@ -545,10 +534,7 @@ Main _$MainFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Main {
-  double get temp =>
-      throw _privateConstructorUsedError; //required double feelsLike,
-//required double tempMin,
-//required double tempMax,
+  double get temp => throw _privateConstructorUsedError;
   int get pressure => throw _privateConstructorUsedError;
   int get humidity => throw _privateConstructorUsedError;
 
@@ -659,9 +645,6 @@ class _$MainImpl implements _Main {
 
   @override
   final double temp;
-//required double feelsLike,
-//required double tempMin,
-//required double tempMax,
   @override
   final int pressure;
   @override
@@ -713,9 +696,7 @@ abstract class _Main implements Main {
   factory _Main.fromJson(Map<String, dynamic> json) = _$MainImpl.fromJson;
 
   @override
-  double get temp; //required double feelsLike,
-//required double tempMin,
-//required double tempMax,
+  double get temp;
   @override
   int get pressure;
   @override
@@ -735,8 +716,6 @@ Sys _$SysFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Sys {
-//required int type,
-//required int id,
   String get country => throw _privateConstructorUsedError;
 
   /// Serializes this Sys to a JSON map.
@@ -820,8 +799,6 @@ class _$SysImpl implements _Sys {
   factory _$SysImpl.fromJson(Map<String, dynamic> json) =>
       _$$SysImplFromJson(json);
 
-//required int type,
-//required int id,
   @override
   final String country;
 
@@ -863,8 +840,6 @@ abstract class _Sys implements Sys {
 
   factory _Sys.fromJson(Map<String, dynamic> json) = _$SysImpl.fromJson;
 
-//required int type,
-//required int id,
   @override
   String get country;
 

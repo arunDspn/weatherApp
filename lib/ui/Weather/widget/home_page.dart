@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:weather_app/data/repositories/weather.dart';
-import 'package:weather_app/data/services/weather_call.dart';
-import '../../../data/services/geocode_call.dart';
+import 'package:weather_app/data/repositories/weather_repository_remote.dart';
+import 'package:weather_app/domain/models/weather.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,14 +21,13 @@ class _HomePageState extends State<HomePage> {
   late int long;
 
   getData() async {
-    String resGeoCode = await GeocodeCall(
-            cityName: cityName, countryCode: countryCode, stateCode: stateCode)
-        .getGeoCode();
+    final geoData = await WeatherRepositoryRemote().getGeoCode(
+        cityName: cityName, countryCode: countryCode, stateCode: stateCode);
 
-    List<dynamic> geoCode = json.decode(resGeoCode);
-    jsonData = await WeatherCall(lat: geoCode[0]['lat'], lon: geoCode[0]['lon'])
-        .getWeatherData();
-    weather = weatherFromJson(jsonData);
+    weather = await WeatherRepositoryRemote()
+        .fetchWeatherData(lat: (geoData.lat), lon: (geoData.lon));
+
+    print(weather);
     setState(() {
       isLoading = false;
     });
@@ -123,8 +119,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 alignment: Alignment.center,
-                child:
-                    isLoading ? const Text("No data loaded") : Text(jsonData),
+                child: isLoading
+                    ? const Text("No data loaded")
+                    : Text(weather.toString()),
               )
             ],
           ),
